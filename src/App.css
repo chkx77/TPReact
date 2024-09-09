@@ -76,21 +76,6 @@ body {
 }
 
 /* Inputs */
-@keyframes inputFocus {
-  0% {
-    border-color: #3498db;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-  50% {
-    border-color: #2ecc71;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
-  }
-  100% {
-    border-color: #3498db;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-}
-
 .circular-input {
   width: 80%;
   max-width: 100px;
@@ -132,21 +117,6 @@ body {
   animation: gameOverAnimation 1s ease-in-out;
 }
 
-@keyframes gameOverAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Modo difícil */
 .hard-mode-text, .hard-mode-alert {
   font-size: 1.25rem;
@@ -174,18 +144,21 @@ body {
 /* Corazones */
 .hearts-container {
   display: flex;
-  flex-wrap: wrap; /* Permite el envolvimiento en múltiples filas */
-  justify-content: center; /* Centra los ítems horizontalmente */
-  gap: 10px; /* Espacio entre los corazones */
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .heart-icon {
-  width: 20px; /* Tamaño de los corazones */
-  height: 20px;
+  width: 30px;
+  height: 30px;
   filter: saturate(1);
   transition: transform 0.3s, filter 0.3s;
-  flex: 0 0 20px; /* Evita que los corazones cambien de tamaño */
+}
+
+.heart-icon.grayed-out {
+  filter: saturate(0);
+  animation: heartLost 1s forwards;
 }
 
 /* Alertas */
@@ -237,6 +210,13 @@ body {
     font-size: 1rem;
   }
 
+  .hearts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
   .heart-icon {
     width: 20px;
     height: 20px;
@@ -272,11 +252,19 @@ body {
   }
 
   .hearts-container {
-    max-width: 200px; /* Ajusta según el tamaño deseado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
   }
 
   .heart-icon {
-    width: 15px; /* Tamaño de los corazones más pequeño */
+    width: 15px;
     height: 15px;
+  }
+
+  .heart-counter {
+    font-size: 1rem;
+    margin-left: 5px;
   }
 }
