@@ -21,22 +21,25 @@ const App = () => {
   gameOverSound.preload = 'auto';
   victorySound.preload = 'auto';
 
-  const inputRef = useRef(null); // Referencia al input
+  const inputRef = useRef(null); 
 
   useEffect(() => {
     if (timeLeft > 0 && !gameOver && !gameWon) {
-      const speed = isHardMode ? 70 : 100; // Si está en modo difícil, más rápido
+      const speed = isHardMode ? 70 : 100; 
       const timer = setInterval(() => setTimeLeft((prev) => prev - 1), speed);
       return () => clearInterval(timer);
     } else if (timeLeft === 0 && !gameOver && !gameWon) {
       setGameOver(true);
       setMessage('');
       gameOverSound.play();
+      if (score > highScore) {
+        setHighScore(score); // Actualizar puntuación máxima
+      }
+      setScore(0); // Reiniciar puntuación acumulada
     }
-  }, [timeLeft, gameOver, gameWon, isHardMode]);
+  }, [timeLeft, gameOver, gameWon, isHardMode, score, highScore]);
 
   useEffect(() => {
-    // Modo difícil cuando quedan 5 o menos intentos
     if (attempts <= 5) {
       setIsHardMode(true);
     } else {
@@ -44,7 +47,6 @@ const App = () => {
     }
   }, [attempts]);
 
-  // Focalizar el input cada vez que el juego se reinicie o se haga un intento
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -56,10 +58,9 @@ const App = () => {
 
     const guessNumber = parseInt(guess);
 
-    // Validar el rango del número
     if (isNaN(guessNumber) || guessNumber < 1 || guessNumber > 20) {
       setMessage('Solo de 1 a 20');
-      setGuess(''); // Limpiar el campo de entrada
+      setGuess(''); 
       return;
     } else {
       setMessage('');
@@ -68,49 +69,40 @@ const App = () => {
     if (attempts > 0) {
       if (guessNumber === targetNumber) {
         setMessage('');
-        const points = attempts; // Sumar puntuación según intentos restantes
+        const points = attempts; 
         setScore((prev) => prev + points);
         setGameWon(true);
         victorySound.play();
       } else if (guessNumber > targetNumber) {
         setMessage('Más bajo');
-        setAttempts((prev) => Math.max(prev - 1, 0)); // Reducir intentos
+        setAttempts((prev) => Math.max(prev - 1, 0));
         loseHeartSound.play();
       } else {
         setMessage('Más alto');
-        setAttempts((prev) => Math.max(prev - 1, 0)); // Reducir intentos
+        setAttempts((prev) => Math.max(prev - 1, 0));
         loseHeartSound.play();
       }
 
-      setTimeLeft(100); // Reiniciar la barra de tiempo
-      setGuess(''); // Limpiar el input
+      setTimeLeft(100); 
+      setGuess('');
 
-      // Si el jugador perdió
       if (attempts === 1 || attempts === 0) {
         setMessage('');
         setGameOver(true);
         gameOverSound.play();
-
-        // Actualizar el high score si la puntuación actual es mayor
         if (score > highScore) {
-          setHighScore(score);
+          setHighScore(score); // Actualizar puntuación máxima
         }
-
-        // Reiniciar el contador de puntos
-        setScore(0);
+        setScore(0); // Reiniciar puntuación acumulada
       }
     } else {
       setMessage('');
       setGameOver(true);
       gameOverSound.play();
-
-      // Actualizar el high score si la puntuación actual es mayor
       if (score > highScore) {
-        setHighScore(score);
+        setHighScore(score); // Actualizar puntuación máxima
       }
-
-      // Reiniciar el contador de puntos
-      setScore(0);
+      setScore(0); // Reiniciar puntuación acumulada
     }
   };
 
@@ -119,7 +111,7 @@ const App = () => {
     gameOverSound.currentTime = 0;
 
     setTargetNumber(Math.floor(Math.random() * 20) + 1);
-    setAttempts(10); // Reiniciar intentos
+    setAttempts(10); 
     setMessage('');
     setGuess('');
     setTimeLeft(100);
@@ -127,7 +119,7 @@ const App = () => {
     setGameWon(false);
 
     if (inputRef.current) {
-      inputRef.current.focus(); // Focalizar el input al reiniciar
+      inputRef.current.focus(); 
     }
   };
 
@@ -176,7 +168,7 @@ const App = () => {
                         min="1"
                         max="20"
                         step="1"
-                        ref={inputRef} // Añadir referencia al input
+                        ref={inputRef} 
                       />
                     </div>
                     <div className="time-bar mt-3">
