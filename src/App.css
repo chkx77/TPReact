@@ -205,6 +205,11 @@ body {
   .instructions, .game-status {
     font-size: 1rem;
   }
+
+  .heart-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -237,5 +242,11 @@ body {
 
   .hearts-container {
     flex-direction: column;
+    gap: 5px;
+  }
+
+  .heart-icon {
+    width: 15px;
+    height: 15px;
   }
 }
