@@ -144,9 +144,17 @@ body {
 /* Corazones */
 .hearts-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+}
+
+.heart-icon {
+  width: 30px;
+  height: 30px;
+  filter: saturate(1);
+  transition: transform 0.3s, filter 0.3s;
 }
 
 /* Alertas */
@@ -225,5 +233,9 @@ body {
 
   .instructions, .game-status {
     font-size: 0.9rem;
+  }
+
+  .hearts-container {
+    flex-direction: column;
   }
 }
