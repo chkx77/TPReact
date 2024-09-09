@@ -241,7 +241,7 @@ body {
   }
 
   .hearts-container {
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
     max-width: 300px; /* Ajusta según el tamaño deseado */
   }
