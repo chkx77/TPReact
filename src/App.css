@@ -151,8 +151,8 @@ body {
 }
 
 .heart-icon {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   filter: saturate(1);
   transition: transform 0.3s, filter 0.3s;
 }
@@ -243,10 +243,16 @@ body {
   .hearts-container {
     flex-direction: column;
     gap: 5px;
+    max-width: 300px; /* Ajusta según el tamaño deseado */
   }
 
   .heart-icon {
     width: 15px;
     height: 15px;
+  }
+
+  /* Dos filas con cinco corazones cada una */
+  .hearts-container > :nth-child(-n+5) {
+    margin-bottom: 5px;
   }
 }
