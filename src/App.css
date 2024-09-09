@@ -3,6 +3,8 @@ body {
   background-color: #2d2d34;
   color: #f5f5f5;
   font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  padding: 0;
 }
 
 /* Títulos */
@@ -12,19 +14,9 @@ body {
   text-shadow: 3px 3px 0px rgba(69, 123, 157, 1);
   position: relative;
   display: inline-block;
-  padding: 0px;
+  padding: 0;
   margin-bottom: 20px;
-}
-
-.text-title::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: none;
-  z-index: -1;
+  text-align: center;
 }
 
 /* Menu principal */
@@ -32,18 +24,22 @@ body {
   background-color: #34495e;
   color: #ecf0f1;
   border-radius: 1rem;
+  margin: 10px;
+  padding: 10px;
 }
 
 /* Botones */
+.btn-action, .btn-reset {
+  width: 100%;
+  font-size: 0.875rem;
+  padding: 1rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
 .btn-action {
   background-color: #f39c12;
   border-color: #f39c12;
-  width: 200px;
-  font-size: 0.875rem;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .btn-action:hover {
@@ -55,12 +51,6 @@ body {
 .btn-reset {
   background-color: #27ae60;
   border-color: #27ae60;
-  width: 200px;
-  font-size: 0.875rem;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 .btn-reset:hover {
@@ -86,29 +76,14 @@ body {
 }
 
 /* Inputs */
-@keyframes inputFocus {
-  0% {
-    border-color: #3498db;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-  50% {
-    border-color: #2ecc71;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
-  }
-  100% {
-    border-color: #3498db;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-}
-
 .circular-input {
-  width: 100px;
-  height: 100px;
+  width: 80%;
+  max-width: 100px;
+  height: auto;
   border-radius: 50%;
   text-align: center;
   font-size: 2rem;
   margin: 0 auto;
-  /*Agregado extra para ingresar numero de forma manual*/
   -moz-appearance: textfield;
   -webkit-appearance: none;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -133,6 +108,7 @@ body {
   text-align: center;
   color: #e74c3c;
   text-shadow: 5px 5px rgb(28, 31, 42);
+  padding: 20px;
 }
 
 .game-over-title {
@@ -141,36 +117,9 @@ body {
   animation: gameOverAnimation 1s ease-in-out;
 }
 
-@keyframes gameOverAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Modo difícil */
-.hard-mode-text {
-  color: #e74c3c;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 20px;
-  right: 50%;
-  transform: translateX(50%);
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+.hard-mode-text, .hard-mode-alert {
+  font-size: 1.25rem;
 }
 
 /* Texto */
@@ -200,34 +149,6 @@ body {
   margin-bottom: 20px;
 }
 
-@keyframes heartLost {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5) rotate(45deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(0) rotate(90deg);
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-}
-
-.heart-icon {
-  width: 30px;
-  height: 30px;
-  filter: saturate(1);
-  transition: transform 0.3s, filter 0.3s;
-}
-
-.heart-icon.grayed-out {
-  filter: saturate(0);
-  animation: heartLost 1s forwards;
-}
-
 /* Alertas */
 .alert {
   min-height: 50px;
@@ -248,26 +169,61 @@ body {
   color: #ecf0f1;
 }
 
-/* Alertas de modo difícil */
-.hard-mode-alert {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #e74c3c;
-  font-size: 24px;
-  font-weight: bold;
-  animation: flashRed 1s infinite;
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  .text-title {
+    font-size: 1.5rem;
+  }
+
+  .btn-action, .btn-reset {
+    width: 100%;
+    padding: 0.8rem 0;
+  }
+
+  .circular-input {
+    width: 60%;
+    max-width: 80px;
+    font-size: 1.5rem;
+  }
+
+  .game-over-title {
+    font-size: 2.5rem;
+  }
+
+  .small-text {
+    font-size: 0.8rem;
+  }
+
+  .instructions, .game-status {
+    font-size: 1rem;
+  }
 }
 
-@keyframes flashRed {
-  0% {
-    color: #e74c3c;
+@media (max-width: 480px) {
+  .text-title {
+    font-size: 1.25rem;
   }
-  50% {
-    color: #c0392b;
+
+  .btn-action, .btn-reset {
+    width: 100%;
+    padding: 0.6rem 0;
   }
-  100% {
-    color: #e74c3c;
+
+  .circular-input {
+    width: 50%;
+    max-width: 60px;
+    font-size: 1.25rem;
+  }
+
+  .game-over-title {
+    font-size: 2rem;
+  }
+
+  .small-text {
+    font-size: 0.7rem;
+  }
+
+  .instructions, .game-status {
+    font-size: 0.9rem;
   }
 }
