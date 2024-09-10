@@ -79,7 +79,7 @@ body {
 .circular-input {
   width: 80%;
   max-width: 100px;
-  height: auto;
+  height: 30px;
   border-radius: 50%;
   text-align: center;
   font-size: 2rem;
