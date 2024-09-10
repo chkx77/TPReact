@@ -1,7 +1,7 @@
 /* General */
 body {
-  background-color: #1e1e2e; /* Color de fondo oscuro */
-  color: #e0e0e0; /* Color de texto suave */
+  background-color: #2d2d34;
+  color: #f5f5f5;
   font-family: 'Press Start 2P', cursive;
   margin: 0;
   padding: 0;
@@ -10,8 +10,8 @@ body {
 /* Títulos */
 .text-title {
   font-size: 2rem;
-  color: #ffcb6b;
-  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+  color: #ffdd57;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
   position: relative;
   display: inline-block;
   padding: 0;
@@ -21,8 +21,8 @@ body {
 
 /* Menu principal */
 .card {
-  background-color: #3a3a4b; 
-  color: #f0f0f0; 
+  background-color: #34495e;
+  color: #ecf0f1;
   border-radius: 1rem;
   margin: 10px;
   padding: 10px;
@@ -38,7 +38,7 @@ body {
 }
 
 .btn-action {
-  background-color: #f39c12; 
+  background-color: #f39c12;
   border-color: #f39c12;
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 .btn-reset:hover {
-  background-color: #2ecc71; 
+  background-color: #2ecc71;
   border-color: #2ecc71;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
@@ -63,7 +63,7 @@ body {
 /* Barra de tiempo */
 .time-bar {
   height: 20px;
-  background-color: #4b4b6b; 
+  background-color: #95a5a6;
   border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
@@ -71,14 +71,15 @@ body {
 
 .time-bar-fill {
   height: 100%;
-  background-color: #ff9a8b; 
+  background-color: #1abc9c;
   transition: width 0.1s linear;
 }
 
 /* Inputs */
 .circular-input {
-  width: 60px; /* Ajustado para ser circular */
-  height: 60px; 
+  width: 80%;
+  max-width: 100px;
+  height: 30px;
   border-radius: 50%;
   text-align: center;
   font-size: 2rem;
@@ -86,13 +87,11 @@ body {
   -moz-appearance: textfield;
   -webkit-appearance: none;
   transition: border-color 0.3s, box-shadow 0.3s;
-  border: 2px solid #e0e0e0;
 }
 
 .circular-input:focus {
   outline: none;
   animation: inputFocus 1s ease-in-out;
-  border-color: #ffcb6b; /* Cambio de borde al enfocar */
 }
 
 .circular-input::-webkit-inner-spin-button,
@@ -108,7 +107,7 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   color: #e74c3c;
-  text-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+  text-shadow: 5px 5px rgb(28, 31, 42);
   padding: 20px;
 }
 
@@ -121,9 +120,6 @@ body {
 /* Modo difícil */
 .hard-mode-text, .hard-mode-alert {
   font-size: 1.25rem;
-  color: #ff9a8b;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
-  animation: hardModeGlow 1.5s infinite alternate; /* Efecto de resplandor */
 }
 
 /* Texto */
@@ -135,13 +131,13 @@ body {
 
 .instructions {
   font-size: 1.25rem;
-  color: #e0e0e0;
+  color: #f5f5f5;
   margin-bottom: 20px;
 }
 
 .game-status {
   font-size: 1.5rem;
-  color: #e0e0e0;
+  color: #f5f5f5;
   margin-bottom: 20px;
 }
 
@@ -176,7 +172,7 @@ body {
 }
 
 .alert-info {
-  background-color: #3498db; 
+  background-color: #3498db;
   color: #ffffff;
 }
 
@@ -185,7 +181,7 @@ body {
   color: #ecf0f1;
 }
 
-/* Media Queries para celulares */
+/* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
   .text-title {
     font-size: 1.5rem;
@@ -197,8 +193,8 @@ body {
   }
 
   .circular-input {
-    width: 50px; 
-    height: 50px; 
+    width: 60%;
+    max-width: 80px;
     font-size: 1.5rem;
   }
 
@@ -238,9 +234,9 @@ body {
   }
 
   .circular-input {
-    width: 40px; 
-    height: 40px; 
-    font-size: 1.25rem;
+    width: 50%;
+    max-width: 60px;
+    font-size: 1.05rem;
   }
 
   .game-over-title {
@@ -273,17 +269,6 @@ body {
   }
 }
 
-/* Animaciones */
-@keyframes inputFocus {
-  0% {
-    border-color: #e0e0e0;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-  100% {
-    border-color: #ffcb6b;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  }
-}
 
 @keyframes hardModeGlow {
   from {
@@ -291,16 +276,5 @@ body {
   }
   to {
     text-shadow: 0 0 10px #ff9a8b, 0 0 20px #ff9a8b, 0 0 30px #ff9a8b;
-  }
-}
-
-@keyframes heartLost {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.5;
-    transform: scale(0.9);
   }
 }
